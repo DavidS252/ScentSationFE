@@ -1,13 +1,13 @@
 import { useState, FC } from 'react';
-
+import PostCard, {PostProps} from './Post';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 interface ItemsListProps {
-    title: string,
-    items: string[],
+    posts: PostProps[],
     onItemsSelected: (index: number) => void
 }
-const ItemsList: FC<ItemsListProps> = ({ title, items, onItemsSelected }) => {
-    console.log('PostsList');
+const ItemsList: FC<ItemsListProps> = ({ posts, onItemsSelected }) => {
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [render, setRender] = useState(0);
 
@@ -18,9 +18,8 @@ const ItemsList: FC<ItemsListProps> = ({ title, items, onItemsSelected }) => {
 
     const addItem = () => {
         console.log('Adding an item');
-        items.push('A new item');
+        posts.push('A new item');
         setRender(render + 1);
-
     }
 
     const onSelect = () => {
@@ -28,21 +27,29 @@ const ItemsList: FC<ItemsListProps> = ({ title, items, onItemsSelected }) => {
         onItemsSelected(selectedIndex);
     }
     return (
-        <>
-            <h1>{title}</h1>
-            <ul className="list-group">
+        <>           
+            <Row xs={1} md={3} className="g-4">
+            {Array.from({ length: 3 }).map((_, idx) => (
+                <Col key={idx}>
+                    <div className="list-group">      
                 {
-                    items.map((item, index) => {
-                        return <li
-                            className={index == selectedIndex ? "list-group-item active" : "list-group-item"}
+                    posts.map((post, index) => {
+                        return <div>
+                            <PostCard
                             key={index}
-                            onClick={() => { onClick(index) }}
-                        >
-                            {index}: {item}
-                        </li>
+                            content={post.content}
+                            owner={post.owner}
+                            userImgUrl={post.userImgUrl}
+                            username={post.username}></PostCard>
+                            <li onClick={() => { onClick(index) }}></li>
+                        </div>
                     })
                 }
-            </ul >
+            </div >
+                </Col>
+            ))}
+
+            </Row>
             <button className="btn btn-primary m-3" onClick={addItem}>Add</button>
             <button className="btn btn-primary" onClick={onSelect}>Selected</button>
 

@@ -1,18 +1,23 @@
 import ItemsList from "./ItemsLIst"
 import usePosts from "../hooks/usePosts"
 
-function PostsList() {
+function HomePage() {
+
   const { posts, error, isLoading } = usePosts();
 
   return (
     <div className="m-5">
+      <h1 style={{ textAlign: 'center' }}>Find Your Scent</h1>
+
+      <br></br>
+      <br></br>
+
       {error && <p>{error}</p>}
       {isLoading && <p>Loading...</p>}
-      <ItemsList items={posts.map(post => post.username)} title="Posts" onItemsSelected={() => { }} />
+      <ItemsList posts={posts} onItemsSelected={() => { }}/>
     </div>
 
   )
 }
 
-
-export default PostsList
+export default HomePage

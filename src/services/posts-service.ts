@@ -11,10 +11,10 @@ export interface Post {
 }
 
 const getPosts = () => {
-    const abortController = new AbortController();
-    const request = apiClient.get<Post[]>("/posts",
-        { signal: abortController.signal });
-    return { request, abort: () => abortController.abort() };
+    const abortController = new AbortController()
+    const request = apiClient.get<Post[]>('/posts',
+        { signal: abortController.signal })
+    return { request, abort: () => abortController.abort() }
 }
 
 export default { getPosts };
