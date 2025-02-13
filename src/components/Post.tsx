@@ -10,13 +10,13 @@ export interface PostProps {
 
 const PostCard: React.FC<PostProps> = ({ content, owner, userImgUrl, username }) => {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '20rem' }}>
             <Card.Img variant="top" src={userImgUrl} />
             <Card.Body>
                 <Card.Title>{owner}</Card.Title>
                 <Card.Text>{content}</Card.Text>
                 <Card.Text>{username}</Card.Text>
-                <Button className='button' style={{backgroundColor: 'DC143C'}}>See Full Post</Button>
+                <Button className='button.card'>See Full Post</Button>
             </Card.Body>
         </Card>
     );
