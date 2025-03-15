@@ -27,7 +27,7 @@ const HomeUserIdLazyImport = createFileRoute('/home/$userId')()
 const HomeLazyRoute = HomeLazyImport.update({
   path: '/home',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/home.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/home.lazy.tsx').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
