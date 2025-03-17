@@ -1,5 +1,5 @@
 import ItemsList from "./ItemsLIst"
-import usePosts from "../hooks/usePosts"
+import usePosts from "../../hooks/usePosts"
 
 function HomePage() {
 
