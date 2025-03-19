@@ -17,7 +17,7 @@ export default function Reviews() {
 const testimonials = [
   {
     quote:
-      "An outstanding website! User-friendly with plenty of amazing restaurants to explore comfortably..",
+      "An outstanding website! User-friendly with plenty of amazing fragrances to explore comfortably..",
     name: "John Doe",
     title: "",
   },

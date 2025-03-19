@@ -22,6 +22,7 @@ export default function EditProfileModal({ isOpen, handleClose }) {
   const [imgSrc, setImgSrc] = useState<File>();
   const [isVisible, setIsVisible] = useState(false);
   const [username, setUsername] = useState(currentUser.username);
+  const [email] = useState(currentUser.email);
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState(currentUser.firstName);
   const [lastName, setLastName] = useState(currentUser.lastName);
@@ -114,6 +115,12 @@ export default function EditProfileModal({ isOpen, handleClose }) {
             ></input>
             <Input
               type="text"
+              label="Email"
+              value={email}
+              disabled={true}
+            />
+            <Input
+              type="text"
               label="Username"
               placeholder="Enter your username"
               value={username}
@@ -133,7 +140,7 @@ export default function EditProfileModal({ isOpen, handleClose }) {
               value={lastName}
               onValueChange={setLastName}
             />
-            <Input
+            {/* <Input
               label="Password"
               placeholder="Enter new password"
               endContent={
@@ -162,7 +169,7 @@ export default function EditProfileModal({ isOpen, handleClose }) {
               errorMessage={isInvalid && "Please enter a matching password"}
               value={secondPassword}
               onValueChange={setSecondPassword}
-            />
+            /> */}
           </ModalBody>
           <ModalFooter>
             <Button color="danger" variant="light" onPress={handleClose}>

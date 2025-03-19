@@ -2,12 +2,10 @@ import { Card, CardBody, CardHeader, Image, Radio, RadioGroup, Spinner } from "@
 import { useQuery } from "@tanstack/react-query";
 import { createLazyFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from "react";
-import { getFragranceByBrand } from "../services/restaurants-service.ts";
+import { getFragranceByBrand } from "../services/fragrances-service.ts"
 
-
-
-export const Route = createLazyFileRoute('/home/restaurants')({
-  component: Restaurants,
+export const Route = createLazyFileRoute('/home/fragrances')({
+  component: Fragrances,
 })
 
 const zara = "zara"
@@ -16,21 +14,21 @@ const dior = "dior"
 const versace = "versace"
 const armani = "armani"
 
-function Restaurants () {
-  const [selectedRestaurant, setSelectedRestaurant] = useState<string>(zara);
-  const [fragrances, setRestaurants] = useState([]);
+function Fragrances () {
+  const [selectedFragrance, setSelectedFragrance] = useState<string>(zara);
+  const [fragrances, setFragrances] = useState([]);
   console.log(fragrances)
 
   const {data, isFetching} = useQuery({
-    queryKey: ["getRestaurants", selectedRestaurant],
-    queryFn: () => getFragranceByBrand(selectedRestaurant),
+    queryKey: ["getFragrances", selectedFragrance],
+    queryFn: () => getFragranceByBrand(selectedFragrance),
     retry: false,
     refetchInterval: false,
   })
 
     useEffect(() => {
         if (data) {
-          setRestaurants(Array.from({length: 9}, (_, index) => data[index]))
+          setFragrances(Array.from({length: 9}, (_, index) => data[index]))
           }
     },[data])
 
@@ -41,8 +39,8 @@ function Restaurants () {
                     className="flex items-center"
                     label="Select your brand"
                     orientation="horizontal"
-                    value={selectedRestaurant}
-                    onValueChange={setSelectedRestaurant}
+                    value={selectedFragrance}
+                    onValueChange={setSelectedFragrance}
                 >
                     <Radio value={zara}>Zara</Radio>
                     <Radio value={chanel}>Chanel</Radio>
@@ -50,11 +48,6 @@ function Restaurants () {
                     <Radio value={versace}>Versace</Radio>
                     <Radio value={armani}>Armani</Radio>
 
-                    {/* <Radio value={paris}>Paris</Radio>
-                    <Radio value={berlin}>Berlin</Radio>
-                    <Radio value={barcelona}>Barcelona</Radio>
-                    <Radio value={rome}>Rome</Radio>
-                    <Radio value={amsterdam}>Amsterdam</Radio> */}
                 </RadioGroup>
             </div>
             {isFetching ? <Spinner style={{marginTop: "100px"}}/> :

@@ -105,7 +105,7 @@ function Home() {
           </NavbarItem>
           <NavbarItem isActive={currentTab === "2"}>
             <Link
-              href="./restaurants"
+              href="./fragrances"
               onClick={() => localStorage.setItem("currentTab", "2")}
               color={currentTab === "2" ? "primary" : "foreground"}
             >
