@@ -19,6 +19,7 @@ import { Route as rootRoute } from './routes/__root'
 const HomeLazyImport = createFileRoute('/home')()
 const IndexLazyImport = createFileRoute('/')()
 const HomeMeLazyImport = createFileRoute('/home/me')()
+const HomeFragrancesLazyImport = createFileRoute('/home/fragrances')()
 const HomeUserIdLazyImport = createFileRoute('/home/$userId')()
 
 // Create/Update Routes
@@ -40,6 +41,14 @@ const HomeMeLazyRoute = HomeMeLazyImport.update({
   path: '/me',
   getParentRoute: () => HomeLazyRoute,
 } as any).lazy(() => import('./routes/home.me.lazy').then((d) => d.Route))
+
+const HomeFragrancesLazyRoute = HomeFragrancesLazyImport.update({
+  id: '/fragrances',
+  path: '/fragrances',
+  getParentRoute: () => HomeLazyRoute,
+} as any).lazy(() =>
+  import('./routes/home.fragrances.lazy').then((d) => d.Route),
+)
 
 const HomeUserIdLazyRoute = HomeUserIdLazyImport.update({
   id: '/$userId',
@@ -72,6 +81,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeUserIdLazyImport
       parentRoute: typeof HomeLazyImport
     }
+    '/home/fragrances': {
+      id: '/home/fragrances'
+      path: '/fragrances'
+      fullPath: '/home/fragrances'
+      preLoaderRoute: typeof HomeFragrancesLazyImport
+      parentRoute: typeof HomeLazyImport
+    }
     '/home/me': {
       id: '/home/me'
       path: '/me'
@@ -86,11 +102,13 @@ declare module '@tanstack/react-router' {
 
 interface HomeLazyRouteChildren {
   HomeUserIdLazyRoute: typeof HomeUserIdLazyRoute
+  HomeFragrancesLazyRoute: typeof HomeFragrancesLazyRoute
   HomeMeLazyRoute: typeof HomeMeLazyRoute
 }
 
 const HomeLazyRouteChildren: HomeLazyRouteChildren = {
   HomeUserIdLazyRoute: HomeUserIdLazyRoute,
+  HomeFragrancesLazyRoute: HomeFragrancesLazyRoute,
   HomeMeLazyRoute: HomeMeLazyRoute,
 }
 
@@ -102,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/home': typeof HomeLazyRouteWithChildren
   '/home/$userId': typeof HomeUserIdLazyRoute
+  '/home/fragrances': typeof HomeFragrancesLazyRoute
   '/home/me': typeof HomeMeLazyRoute
 }
 
@@ -109,6 +128,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/home': typeof HomeLazyRouteWithChildren
   '/home/$userId': typeof HomeUserIdLazyRoute
+  '/home/fragrances': typeof HomeFragrancesLazyRoute
   '/home/me': typeof HomeMeLazyRoute
 }
 
@@ -117,15 +137,22 @@ export interface FileRoutesById {
   '/': typeof IndexLazyRoute
   '/home': typeof HomeLazyRouteWithChildren
   '/home/$userId': typeof HomeUserIdLazyRoute
+  '/home/fragrances': typeof HomeFragrancesLazyRoute
   '/home/me': typeof HomeMeLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/home' | '/home/$userId' | '/home/me'
+  fullPaths: '/' | '/home' | '/home/$userId' | '/home/fragrances' | '/home/me'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/home' | '/home/$userId' | '/home/me'
-  id: '__root__' | '/' | '/home' | '/home/$userId' | '/home/me'
+  to: '/' | '/home' | '/home/$userId' | '/home/fragrances' | '/home/me'
+  id:
+    | '__root__'
+    | '/'
+    | '/home'
+    | '/home/$userId'
+    | '/home/fragrances'
+    | '/home/me'
   fileRoutesById: FileRoutesById
 }
 
@@ -160,11 +187,16 @@ export const routeTree = rootRoute
       "filePath": "home.lazy.tsx",
       "children": [
         "/home/$userId",
+        "/home/fragrances",
         "/home/me"
       ]
     },
     "/home/$userId": {
       "filePath": "home.$userId.lazy.tsx",
+      "parent": "/home"
+    },
+    "/home/fragrances": {
+      "filePath": "home.fragrances.lazy.tsx",
       "parent": "/home"
     },
     "/home/me": {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Textarea } from "@nextui-org/react";
 import { getAnswer } from '../services/gemini-service';
 import ReactMarkdown from "react-markdown";
@@ -51,10 +51,10 @@ function GeminiButton() {
 
   return (
     <>
-      <Button color="primary" onPress={handleOpen}>Ask Gemini</Button>
+      <Button color="primary" onPress={handleOpen}>Ask Us</Button>
       <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
         <ModalContent>
-          <ModalHeader>Ask Gemini</ModalHeader>
+          <ModalHeader>Ask Us</ModalHeader>
           <ModalBody>
             <Textarea
               value={prompt}

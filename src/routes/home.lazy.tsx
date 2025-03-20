@@ -24,6 +24,7 @@ import EditProfileModal from "../components/EditProfileModal.tsx";
 import SearchBar from "../components/SearchBar.tsx";
 import useCurrentUser from "../hooks/useCurrentUser";
 import { logout } from "../services/user-service";
+import ChatModal from "../components/ChatModal.tsx"
 
 export const Route = createLazyFileRoute("/home")({
   component: Home,
@@ -80,9 +81,10 @@ function Home() {
           ],
         }}
       >
+        <ChatModal />
         <NavbarBrand>
           <FoodieFinds />
-          <p className="font-bold text-inherit">Foodie Finds</p>
+          <p className="font-bold text-inherit">ScentSation</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem isActive={currentTab === "1"}>
@@ -103,7 +105,7 @@ function Home() {
           </NavbarItem>
           <NavbarItem isActive={currentTab === "2"}>
             <Link
-              href="./restaurants"
+              href="./fragrances"
               onClick={() => localStorage.setItem("currentTab", "2")}
               color={currentTab === "2" ? "primary" : "foreground"}
             >
