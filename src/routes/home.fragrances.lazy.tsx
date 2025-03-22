@@ -16,7 +16,7 @@ const armani = "armani"
 
 function Fragrances () {
   const [selectedFragrance, setSelectedFragrance] = useState<string>(zara);
-  const [fragrances, setFragrances] = useState([]);
+  const [fragrances, setFragrances] = useState<Record<string, string>[]>([]);
   console.log(fragrances)
 
   const {data, isFetching} = useQuery({

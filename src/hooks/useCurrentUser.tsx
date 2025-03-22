@@ -14,6 +14,6 @@ export default function useCurrentUser() {
     );
   }
   return (
-    JSON.parse(currentUser) ?? JSON.parse(localStorage.getItem("currentUser"))
+    JSON.parse(currentUser ?? "") ?? JSON.parse(localStorage.getItem("currentUser") ?? "")
   );
 }

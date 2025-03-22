@@ -46,7 +46,7 @@ export default function FullPost({
     onSuccess: (data) => {
       console.log(data);
       refetch();
-      setComments([...comments, data]);
+      setComments([...(comments ?? []), data]);
       setComment("");
     },
   });
@@ -90,7 +90,7 @@ export default function FullPost({
                     <p className="self-start">{content}</p>
                   </CardBody>
                 </Card>
-                <Comments comments={comments} />
+                <Comments comments={comments ?? []} />
                 {/* <Divider/> */}
                 {/* <div>hello</div> */}
               </ModalBody>

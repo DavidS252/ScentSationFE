@@ -58,7 +58,7 @@ export default function Posts({ posts, refetch, userId }: Props) {
   const handleDeletePost = async (post: Post, index: number) => {
     const res = await deletePost(post);
     if (res === "Deleted successfully") {
-      refetch();
+      refetch?.();
       modifyPopOver(false, index);
     }
   };
@@ -133,8 +133,8 @@ export default function Posts({ posts, refetch, userId }: Props) {
             )}
             <p className="self-start mt-2 ml-2">{post.content}</p>
             <p className="self-start mt-2 ml-2 text-xs">
-              {post.comments.length
-                ? `${post.comments.length} comments`
+              {post.comments?.length
+                ? `${post.comments?.length} comments`
                 : "No comments"}
             </p>
           </CardBody>
@@ -144,13 +144,13 @@ export default function Posts({ posts, refetch, userId }: Props) {
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         post={selectedPost}
-        refetch={refetch}
+        refetch={refetch ?? (() => {})}
       />
       <EditPost
         isOpen={isEditOpen}
         onOpenChange={onEditOpenChange}
         post={selectedPost}
-        refetch={refetch}
+        refetch={refetch ?? (() => {})}
       />
     </>
   );

@@ -16,8 +16,6 @@ import avatarLogo from "../assets/avatar.jpeg";
 import { uploadPhoto } from "../services/file-service";
 import { registerUser } from "../services/user-service";
 import { IUser } from "../types";
-import { EyeFilledIcon } from "./icons/EyeFilledIcon";
-import { EyeSlashFilledIcon } from "./icons/EyeSlashFilledIcon";
 
 export default function JoinModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -153,11 +151,6 @@ export default function JoinModal() {
                       type="button"
                       onClick={toggleVisibility}
                     >
-                      {isVisible ? (
-                        <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-                      ) : (
-                        <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-                      )}
                     </button>
                   }
                   type={isVisible ? "text" : "password"}
