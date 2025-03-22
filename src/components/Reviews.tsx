@@ -23,24 +23,24 @@ const testimonials = [
   },
   {
     quote:
-      "I was amazed to find such fantastic dining spots so quickly and effortlessly.",
+      "I was amazed to find such fantastic fragrances so quickly and effortlessly.",
     name: "Emily Clark",
     title: "",
   },
   {
-    quote: "Every restaurant we discover here feels like a dream within a dream, thanks to the wonderful reviews.",
+    quote: "Every fragrance I discover here feels like a dream within a dream, thanks to the wonderful reviews.",
     name: "Alex Johnson",
     title: "",
   },
   {
     quote:
-      "There’s no doubt Foodie Finds is the best website for discovering new dining experiences and planning outings.",
+      "There’s no doubt Scentsation is the best website for discovering new aromatic experiences.",
     name: "Sarah Brown",
     title: "",
   },
   {
     quote:
-      "You might call me a fanatic, but I absolutely adore this sleek and modern restaurant-finding website.",
+      "You might call me a fanatic, but I absolutely adore this sleek and modern fragrance-review website.",
     name: "Michael Reed",
     title: "",
   },

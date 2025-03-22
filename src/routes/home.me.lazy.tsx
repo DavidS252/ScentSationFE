@@ -4,7 +4,7 @@ import NoPost from "../components/Posts/NoPost";
 import Posts from "../components/Posts/Posts";
 import UploadPostCard from "../components/Posts/UploadPostCard";
 import useCurrentUser from "../hooks/useCurrentUser";
-import { getAllUserPosts } from "../services/posts-service";
+import { getAllPosts } from "../services/posts-service";
 
 export const Route = createLazyFileRoute("/home/me")({
   component: HomeMe,
@@ -18,7 +18,7 @@ function HomeMe() {
     refetch,
   } = useQuery({
     queryKey: ["posts"],
-    queryFn: () => getAllUserPosts(user._id),
+    queryFn: () => getAllPosts(),
   });
 
   return (

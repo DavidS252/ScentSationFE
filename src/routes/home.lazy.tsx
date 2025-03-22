@@ -1,4 +1,4 @@
-import { faEarth, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUser, faWineBottle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Avatar,
@@ -19,7 +19,6 @@ import {
   useNavigate,
 } from "@tanstack/react-router";
 import { Key, useEffect, useState } from "react";
-import { FoodieFinds } from "../assets/FoodieFinds";
 import EditProfileModal from "../components/EditProfileModal.tsx";
 import SearchBar from "../components/SearchBar.tsx";
 import useCurrentUser from "../hooks/useCurrentUser";
@@ -83,7 +82,6 @@ function Home() {
       >
         <ChatModal />
         <NavbarBrand>
-          <FoodieFinds />
           <p className="font-bold text-inherit">ScentSation</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -94,7 +92,7 @@ function Home() {
               color={currentTab === "1" ? "primary" : "foreground"}
             >
               <Tooltip
-                content="Views"
+                content="Home Page"
                 key="bottom"
                 placement="bottom"
                 color="foreground"
@@ -110,12 +108,28 @@ function Home() {
               color={currentTab === "2" ? "primary" : "foreground"}
             >
               <Tooltip
-                content="Restaurants"
+                content="Fragrances for you"
                 key="bottom"
                 placement="bottom"
                 color="foreground"
               >
-                <FontAwesomeIcon icon={faEarth} className="w-[48px] h-[20px]" />
+                <FontAwesomeIcon icon={faWineBottle} className="w-[48px] h-[20px]" />
+              </Tooltip>
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive={currentTab === "3"}>
+            <Link
+              href={`./${currentUser?._id}`}
+              onClick={() => localStorage.setItem("currentTab", "3")}
+              color={currentTab === "3" ? "primary" : "foreground"}
+            >
+              <Tooltip
+                content="My Reviews"
+                key="bottom"
+                placement="bottom"
+                color="foreground"
+              >
+                <FontAwesomeIcon icon={faUser} className="w-[48px] h-[20px]" />
               </Tooltip>
             </Link>
           </NavbarItem>
