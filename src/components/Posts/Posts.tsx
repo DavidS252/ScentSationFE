@@ -90,7 +90,7 @@ export default function Posts({ posts, refetch, userId }: Props) {
                 </Chip>
               </div>
             </div>
-            {userId === currentUser._id && (
+            {post.username === currentUser.username && (
               <Popover
                 placement="bottom"
                 isOpen={isPopOverOpenArr[index]}

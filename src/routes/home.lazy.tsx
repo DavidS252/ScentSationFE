@@ -19,7 +19,6 @@ import {
   useNavigate,
 } from "@tanstack/react-router";
 import { Key, useEffect, useState } from "react";
-import { FoodieFinds } from "../assets/FoodieFinds";
 import EditProfileModal from "../components/EditProfileModal.tsx";
 import SearchBar from "../components/SearchBar.tsx";
 import useCurrentUser from "../hooks/useCurrentUser";
@@ -83,7 +82,6 @@ function Home() {
       >
         <ChatModal />
         <NavbarBrand>
-          <FoodieFinds />
           <p className="font-bold text-inherit">ScentSation</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
