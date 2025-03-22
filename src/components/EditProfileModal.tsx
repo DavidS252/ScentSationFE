@@ -13,23 +13,19 @@ import { ChangeEvent, useRef, useState } from "react";
 import useCurrentUser from "../hooks/useCurrentUser.tsx";
 import { uploadPhoto } from "../services/file-service";
 import { editProfile } from "../services/user-service";
-import { EyeFilledIcon } from "./icons/EyeFilledIcon";
-import { EyeSlashFilledIcon } from "./icons/EyeSlashFilledIcon";
 
 export default function EditProfileModal({ isOpen, handleClose }) {
   const currentUser = useCurrentUser();
 
   const [imgSrc, setImgSrc] = useState<File>();
-  const [isVisible, setIsVisible] = useState(false);
   const [username, setUsername] = useState(currentUser.username);
   const [email] = useState(currentUser.email);
-  const [password, setPassword] = useState("");
+  const [password] = useState("");
   const [firstName, setFirstName] = useState(currentUser.firstName);
   const [lastName, setLastName] = useState(currentUser.lastName);
   const [imgUrl] = useState(currentUser.imgUrl);
-  const [secondPassword, setSecondPassword] = useState("");
+  const [secondPassword] = useState("");
 
-  const toggleVisibility = () => setIsVisible(!isVisible);
   const isInvalid =
     (password !== "" || secondPassword !== "") && password !== secondPassword;
   const isDirty =
@@ -63,7 +59,7 @@ export default function EditProfileModal({ isOpen, handleClose }) {
     };
 
     if (user) {
-      const edited: Object = await editProfile(currentUser._id, user);
+      const edited = await editProfile(currentUser._id, user);
 
       if (edited) {
         localStorage.setItem(

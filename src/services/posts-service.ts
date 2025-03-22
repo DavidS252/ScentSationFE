@@ -13,7 +13,7 @@ export const getAllPosts = async () => {
 
 export const getAllUserPosts = async (userId: string) => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken } = JSON.parse(currentUser);
+  const { accessToken } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.get(`/userPost/user/allPosts/${userId}`, {
     headers: { Authorization: `JWT ${accessToken}` },
   });
@@ -23,7 +23,7 @@ export const getAllUserPosts = async (userId: string) => {
 
 export const createPost = async (post: Post) => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken } = JSON.parse(currentUser);
+  const { accessToken } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.post(
     "/userPost",
     { ...post },
@@ -37,7 +37,7 @@ export const createPost = async (post: Post) => {
 
 export const editPost = async (post: Post) => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken } = JSON.parse(currentUser);
+  const { accessToken } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.put(
     `/userPost/${post._id}`,
     { ...post },
@@ -51,7 +51,7 @@ export const editPost = async (post: Post) => {
 
 export const deletePost = async (post: Post) => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken } = JSON.parse(currentUser);
+  const { accessToken } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.delete(`/userPost/${post._id}`, {
     headers: { Authorization: `JWT ${accessToken}` },
   });
@@ -61,7 +61,7 @@ export const deletePost = async (post: Post) => {
 
 export const createComment = async (postId: string, content: string) => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken, imgUrl, username } = JSON.parse(currentUser);
+  const { accessToken, imgUrl, username } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.put(
     `/userPost/addComment/${postId}`,
     { userImgUrl: imgUrl, content, username },

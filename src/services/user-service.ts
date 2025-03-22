@@ -44,7 +44,7 @@ export const googleSignin = (credentialResponse: CredentialResponse) => {
 
 export const getAllUsers = async (currentUserId: string) => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken } = JSON.parse(currentUser);
+  const { accessToken } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.get(`/user/allUsers/${currentUserId}`, {
     headers: { Authorization: `JWT ${accessToken}` },
   });
@@ -62,7 +62,7 @@ export const getCurrentUser = async (accessToken: string) => {
 
 export const logout = async () => {
   const currentUser = localStorage.getItem("currentUser");
-  const { refreshToken } = JSON.parse(currentUser);
+  const { refreshToken } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.get("/auth/logout", {
     headers: { Authorization: `JWT ${refreshToken}` },
   });
@@ -72,7 +72,7 @@ export const logout = async () => {
 
 export const editProfile = async (userId: string, editUser: editUser) => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken } = JSON.parse(currentUser);
+  const { accessToken } = JSON.parse(currentUser ?? "");
 
   return new Promise((resolve, reject) => {
     apiClient
@@ -94,7 +94,7 @@ export const editProfile = async (userId: string, editUser: editUser) => {
 
 export const getUserByName = async (fullName: string) => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken } = JSON.parse(currentUser);
+  const { accessToken } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.get(`/user/filter?search=${fullName}`, {
     headers: { Authorization: `JWT ${accessToken}` },
   });
@@ -104,7 +104,7 @@ export const getUserByName = async (fullName: string) => {
 
 export const getUserById = async (userId: string) => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken } = JSON.parse(currentUser);
+  const { accessToken } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.get(`/user/${userId}`, {
     headers: { Authorization: `JWT ${accessToken}` },
   });

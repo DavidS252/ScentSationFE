@@ -10,7 +10,7 @@ export default function SearchBar() {
 
   const list = useAsyncList({
     async load({ filterText }) {
-      const users = await getUserByName(filterText);
+      const users = await getUserByName(filterText ?? "");
       return {
         items: users,
       };
@@ -76,7 +76,7 @@ export default function SearchBar() {
           startContent={
             <Avatar alt="user avatar" className="w-6 h-6" src={item.imgUrl} />
           }
-          onClick={() => openOtherUserPage(item._id)}
+          onClick={() => openOtherUserPage((item._id ?? ""))}
         >
           {`${item.firstName} ${item.lastName}`}
         </AutocompleteItem>

@@ -10,12 +10,8 @@ export const getFragranceByBrand = async (scent: string): Promise <Record<string
             'X-RapidAPI-Host': 'fragrancefinder-api.p.rapidapi.com'
         },
     };
-
-    try {
-        const response = await axios.request(options);
-       return(response.data);
-    } catch (error) {
-        console.error(error);
-    }
+    const response = await axios.request(options);
+    return(response.data);
+    
 }
 
