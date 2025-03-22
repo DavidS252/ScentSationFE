@@ -1,4 +1,4 @@
-import { faEarth, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faWineBottle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Avatar,
@@ -108,12 +108,12 @@ function Home() {
               color={currentTab === "2" ? "primary" : "foreground"}
             >
               <Tooltip
-                content="Restaurants"
+                content="Fragrances for you"
                 key="bottom"
                 placement="bottom"
                 color="foreground"
               >
-                <FontAwesomeIcon icon={faEarth} className="w-[48px] h-[20px]" />
+                <FontAwesomeIcon icon={faWineBottle} className="w-[48px] h-[20px]" />
               </Tooltip>
             </Link>
           </NavbarItem>
