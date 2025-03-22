@@ -25,7 +25,7 @@ interface Props {
   refetch?: () => void;
   userId?: string;
 }
-export default function Posts({ posts, refetch, userId }: Props) {
+export default function Posts({ posts, refetch }: Props) {
   const currentUser = useCurrentUser();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const {

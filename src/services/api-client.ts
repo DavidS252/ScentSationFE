@@ -3,7 +3,7 @@ import { refresh } from "./user-service";
 
 export { CanceledError };
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://10.10.246.76",
 });
 
 apiClient.interceptors.response.use(

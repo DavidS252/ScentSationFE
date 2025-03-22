@@ -3,7 +3,7 @@ import apiClient from "./api-client";
 
 export const getAllPosts = async () => {
   const currentUser = localStorage.getItem("currentUser");
-  const { accessToken } = JSON.parse(currentUser);
+  const { accessToken } = JSON.parse(currentUser ?? "");
   const { data } = await apiClient.get(`/userPost/`, {
     headers: { Authorization: `JWT ${accessToken}` },
   });
