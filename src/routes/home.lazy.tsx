@@ -1,4 +1,4 @@
-import { faHome, faWineBottle } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUser, faWineBottle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Avatar,
@@ -92,7 +92,7 @@ function Home() {
               color={currentTab === "1" ? "primary" : "foreground"}
             >
               <Tooltip
-                content="Views"
+                content="Home Page"
                 key="bottom"
                 placement="bottom"
                 color="foreground"
@@ -114,6 +114,22 @@ function Home() {
                 color="foreground"
               >
                 <FontAwesomeIcon icon={faWineBottle} className="w-[48px] h-[20px]" />
+              </Tooltip>
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive={currentTab === "3"}>
+            <Link
+              href={`./${currentUser?._id}`}
+              onClick={() => localStorage.setItem("currentTab", "3")}
+              color={currentTab === "3" ? "primary" : "foreground"}
+            >
+              <Tooltip
+                content="My Reviews"
+                key="bottom"
+                placement="bottom"
+                color="foreground"
+              >
+                <FontAwesomeIcon icon={faUser} className="w-[48px] h-[20px]" />
               </Tooltip>
             </Link>
           </NavbarItem>
