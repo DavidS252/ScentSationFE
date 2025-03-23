@@ -18,7 +18,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import useCurrentUser from "../../hooks/useCurrentUser";
 import { createComment } from "../../services/posts-service";
-import { Post } from "../../types/post.type";
+import { Post } from "../../types/Post.type";
 import Comments from "./Comments";
 
 interface Props {

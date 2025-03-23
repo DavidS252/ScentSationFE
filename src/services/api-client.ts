@@ -1,9 +1,12 @@
 import axios, { CanceledError } from "axios";
 import { refresh } from "./user-service";
 
+
+const backend_url = "https://193.106.55.237/"
+
 export { CanceledError };
 const apiClient = axios.create({
-  baseURL: "https://10.10.246.76",
+  baseURL: backend_url,
 });
 
 apiClient.interceptors.response.use(

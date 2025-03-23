@@ -1,5 +1,5 @@
 import { Avatar } from "@nextui-org/react";
-import { Comment } from "../../types/post.type";
+import { Comment } from "../../types/Post.type";
 
 interface Props {
   comments: Comment[];

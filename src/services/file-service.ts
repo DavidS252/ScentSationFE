@@ -10,7 +10,7 @@ export const uploadPhoto = async (photo: File) => {
     if (photo) {
       formData.append("file", photo);
       apiClient
-        .post<IUpoloadResponse>("file?file=123.jpeg", formData, {
+        .post<IUpoloadResponse>("file", formData, {
           headers: {
             "Content-Type": "image/jpeg",
           },

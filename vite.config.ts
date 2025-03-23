@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
         key: fs.readFileSync('./client-key.pem'),
         cert: fs.readFileSync('./client-cert.pem'),
       },
-      host: 'localhost',
+      host: '193.106.55.237',
       port: 443, // Change if needed
     },
     plugins: [react(), TanStackRouterVite(), nodePolyfills( {

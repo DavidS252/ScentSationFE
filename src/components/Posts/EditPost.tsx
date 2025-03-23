@@ -21,7 +21,7 @@ import {
   import useCurrentUser from "../../hooks/useCurrentUser";
   import { uploadPhoto } from "../../services/file-service";
   import { editPost } from "../../services/posts-service";
-  import { Post } from "../../types/post.type";
+  import { Post } from "../../types/Post.type";
   
   interface Props {
     isOpen: boolean;

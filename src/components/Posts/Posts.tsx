@@ -16,7 +16,7 @@ import {
 import { useState } from "react";
 import useCurrentUser from "../../hooks/useCurrentUser";
 import { deletePost } from "../../services/posts-service";
-import { Post } from "../../types/post.type";
+import { Post } from "../../types/Post.type";
 import EditPost from "./EditPost";
 import FullPost from "./FullPost";
 

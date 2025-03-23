@@ -24,3 +24,5 @@ client-key.pem
 *.njsproj
 *.sln
 *.sw?
+.env.production
+client.csr
