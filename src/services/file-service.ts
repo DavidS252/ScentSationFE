@@ -12,15 +12,19 @@ export const uploadPhoto = async (photo: File) => {
       apiClient
         .post<IUpoloadResponse>("file", formData, {
           headers: {
-            "Content-Type": "image/jpeg",
+            "Content-Type": "multipart/form-data",
           },
         })
         .then((res) => {
+          console.log("Upload response:", res);
+          if (!res.data.url){
+            return reject(new Error("No URL returned from upload"));
+          }
           resolve(res.data.url);
         })
         .catch((err) => {
           reject(err);
         });
-    }
+    } else throw new Error("No photo provided")
   });
 };
