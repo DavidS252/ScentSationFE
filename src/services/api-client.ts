@@ -2,7 +2,7 @@ import axios, { CanceledError } from "axios";
 import { refresh } from "./user-service";
 
 
-const backend_url = "https://193.106.55.237/"
+const backend_url = "https://node76.cs.colman.ac.il/"
 
 export { CanceledError };
 const apiClient = axios.create({
